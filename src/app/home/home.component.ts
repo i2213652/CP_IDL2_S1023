@@ -5,6 +5,7 @@ import { Tarea } from '../models/tarea.model';
 
 import { Router } from '@angular/router';
 
+// Usamos la librería SweetAlert 2 para los mensajes emergentes
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   //Método para valores iniciales de la tarea
   ngOnInit() {
-    this.tarea.id = this.tareaService.count() + 1;
+    this.tarea.id = this.tareaService.count() + 1; //Para obtener un id simulado y correlativo
     this.tarea.titulo = '';
     this.tarea.descripcion = '';
   }

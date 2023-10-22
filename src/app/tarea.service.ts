@@ -4,6 +4,8 @@ import { Tarea } from './models/tarea.model';
 @Injectable({
   providedIn: 'root',
 })
+
+// Usamos inyección de dependencias para compartir la información entre los componentes
 export class TareaService {
   private tareas: Tarea[] = [];
 
