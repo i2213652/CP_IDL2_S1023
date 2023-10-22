@@ -18,6 +18,10 @@ export class TareaService {
   }
 
   add(item: Tarea) {
-    this.tareas.push(item);
+    return this.tareas.push(item);
+  }
+
+  deleteAll() {
+    return (this.tareas = []);
   }
 }

@@ -1,6 +1,16 @@
 <div class="container table-container">
   <div class="card col-md-8 col-12 offset-md-2">
     <div class="card-body">
+      <div>
+        <button
+          class="btn btn-danger"
+          (click)="deleteAll()"
+          *ngIf="tareas.length > 0"
+        >
+          Borrar todo
+        </button>
+      </div>
+
       <table class="table">
         <thead>
           <tr>
