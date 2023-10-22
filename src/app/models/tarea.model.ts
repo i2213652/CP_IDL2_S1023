@@ -1,5 +1,5 @@
 export class Tarea {
   id!: number;
-  nombre!: string;
+  titulo!: string;
   descripcion!: string;
 }

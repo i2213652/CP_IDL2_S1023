@@ -5,12 +5,14 @@ import { Tarea } from './models/tarea.model';
   providedIn: 'root',
 })
 export class TareaService {
-  constructor() {}
-
   private tareas: Tarea[] = [];
 
   getAll(): Tarea[] {
     return this.tareas;
+  }
+
+  count(): number {
+    return this.tareas.length;
   }
 
   add(item: Tarea) {

@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TareaComponent } from './home/tarea/tarea.component';
 import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './home/layout/layout.component';
 
 @NgModule({
-  declarations: [AppComponent, TareaComponent, HomeComponent],
+  declarations: [AppComponent, TareaComponent, HomeComponent, LayoutComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
