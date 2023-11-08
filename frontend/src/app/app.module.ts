@@ -8,9 +8,11 @@ import { TareaComponent } from './home/tarea/tarea.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './home/layout/layout.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent, TareaComponent, HomeComponent, LayoutComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
