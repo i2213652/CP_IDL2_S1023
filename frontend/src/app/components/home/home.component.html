@@ -1,0 +1,36 @@
+<div class="container form-container">
+  <div class="card col-md-4 col-12 offset-md-4">
+    <div class="card-body">
+      <div class="card-title">
+        <h5 class="card-title">Registrar TAREA</h5>
+      </div>
+      <form (ngSubmit)="saveTask()">
+        <div class="mb-3">
+          <label for="inpTitle" class="form-label">Título</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            id="inpTitle"
+            [(ngModel)]="task.title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="txtDescripcion" name="description" class="form-label"
+            >Descripción</label
+          >
+          <textarea
+            class="form-control"
+            name="descripcion"
+            id="txtDescripcion"
+            rows="2"
+            [(ngModel)]="task.description"
+          ></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
