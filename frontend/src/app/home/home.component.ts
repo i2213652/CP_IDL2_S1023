@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TareaService } from '../tarea.service';
-import { Tarea } from '../models/tarea.model';
+import { TaskService } from '../core/services/task.service';
+import { Task } from '../models/task';
 
 import { Router } from '@angular/router';
+
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Usamos la librería SweetAlert 2 para los mensajes emergentes
 import Swal from 'sweetalert2';
@@ -14,20 +16,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  tarea: Tarea = new Tarea();
+  task: Task = new Task();
 
-  constructor(private tareaService: TareaService, private router: Router) {}
+  constructor(private taskService: TaskService, private router: Router) {}
 
   //Método para valores iniciales de la tarea
   ngOnInit() {
-    this.tarea.id = this.tareaService.count() + 1; //Para obtener un id simulado y correlativo
-    this.tarea.titulo = '';
-    this.tarea.descripcion = '';
+    this.task.title = '';
+    this.task.description = '';
+    this.task.completed = false;
   }
 
   //Método para guardar la tarea
-  guardarTarea() {
-    if (this.tarea.titulo == null || this.tarea.titulo.trim() == '') {
+  saveTask() {
+    if (this.task.title == null || this.task.title.trim() == '') {
       Swal.fire({
         icon: 'error',
         title: '¡Complete el titulo de la tarea!',
@@ -44,8 +46,16 @@ export class HomeComponent implements OnInit {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.value) {
-        this.tareaService.add(this.tarea);
-        return this.router.navigate(['/tareas']);
+        const data = {
+          title: this.task.title,
+          description: this.task.description,
+        };
+
+        this.taskService.createTask(data).subscribe((data: any) => {
+          console.log(data);
+        });
+
+        return this.router.navigate(['/tasks']);
       } else {
         return false;
       }

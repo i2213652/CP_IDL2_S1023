@@ -2,28 +2,17 @@
   <div class="card col-md-4 col-12 offset-md-4">
     <div class="card-body">
       <div class="card-title">
-        <h5 class="card-title">Lista de tareas</h5>
+        <h5 class="card-title">Registrar TAREA</h5>
       </div>
-      <form (ngSubmit)="guardarTarea()">
+      <form (ngSubmit)="saveTask()">
         <div class="mb-3">
-          <label for="inpId" class="form-label">ID</label>
-          <input
-            type="number"
-            name="id"
-            class="form-control text-center"
-            id="inpId"
-            [(ngModel)]="tarea.id"
-            disabled
-          />
-        </div>
-        <div class="mb-3">
-          <label for="inpTitulo" class="form-label">Título</label>
+          <label for="inpTitle" class="form-label">Título</label>
           <input
             type="text"
-            name="titulo"
+            name="title"
             class="form-control"
-            id="inpTitulo"
-            [(ngModel)]="tarea.titulo"
+            id="inpTitle"
+            [(ngModel)]="task.title"
           />
         </div>
         <div class="mb-3">
@@ -35,7 +24,7 @@
             name="descripcion"
             id="txtDescripcion"
             rows="2"
-            [(ngModel)]="tarea.descripcion"
+            [(ngModel)]="task.description"
           ></textarea>
         </div>
         <div class="text-center">
