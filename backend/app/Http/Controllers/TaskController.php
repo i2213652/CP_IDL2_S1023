@@ -16,7 +16,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title' => 'required|string|max:100'
+            'title' => 'required|string|max:100',
+            'description' => 'nullable'
         ]);
 
         $task = Task::create($data);
@@ -24,21 +25,25 @@ class TaskController extends Controller
         return response()->json(['task' => $task], 201);
     }
 
-    public function show(Task $task)
+    public function getById($id)
     {
-        return response()->json(['task' => $task]);
+        $task = Task::find($id);
+
+        return $task;
     }
 
-    public function update(Request $request, Task $task)
+    public function update($id, Request $request)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:100',
-            'description' => 'string'
-        ]);
+        return $request;
 
-        $task->update($data);
+        // $data = $request->validate([
+        //     'title' => 'required|string|max:100',
+        //     'description' => 'string'
+        // ]);
 
-        return response()->json(['task' => $task]);
+        // $task->update($data);
+
+        // return response()->json(['task' => $task]);
     }
 
     public function destroy(Task $task)

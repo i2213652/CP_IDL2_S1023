@@ -18,6 +18,10 @@ export class TaskService {
     const url = `${environment.apiUrl}/api/tasks`;
     return this.http.get<any[]>(url);
   }
+  getById(id: number): Observable<Task> {
+    const url = `${environment.apiUrl}/api/tasks/${id}`;
+    return this.http.get<Task>(url);
+  }
 
   createTask(data: any) {
     const url = `${environment.apiUrl}/api/tasks`;
