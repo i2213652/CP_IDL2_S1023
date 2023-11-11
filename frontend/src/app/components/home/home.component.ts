@@ -56,14 +56,20 @@ export class HomeComponent {
       return false;
     }
 
+    let message = null;
+
+    if (this.mode == 'NEW') {
+      message = '¿Desea crear esta nueva tarea?';
+    } else {
+      message = '¿Desea actualizar los datos de esta tarea?';
+    }
+
     return Swal.fire({
-      title: '¿Desea guardar los cambios?',
+      title: message,
       showCancelButton: true,
       confirmButtonText: 'Si',
       cancelButtonText: 'No',
     }).then((result) => {
-      console.log('okitas');
-
       if (result.value) {
         const id = this.task.id;
 
@@ -76,8 +82,7 @@ export class HomeComponent {
           return this.taskService
             .updateTask(id, task)
             .subscribe((data: any) => {
-              console.log(data);
-              // this.router.navigate(['/tasks']);
+              this.router.navigate(['/tasks']);
             });
         } else if (this.mode == 'NEW') {
           return this.taskService.createTask(task).subscribe((data: any) => {
@@ -86,6 +91,21 @@ export class HomeComponent {
         }
 
         return task;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  clean(): void {
+    Swal.fire({
+      title: '¿Desea cancelar la edición de la tarea?',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.value) {
+        return this.router.navigate(['/']);
       } else {
         return false;
       }

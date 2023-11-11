@@ -13,8 +13,10 @@
         <tbody class="table-group-divider">
           <tr *ngFor="let item of tasks" class="table-bordered">
             <td>{{ item.id }}</td>
-            <td>{{ item.title }}</td>
-            <td>{{ item.description == null ? "-" : item.description }}</td>
+            <td class="mayus">{{ item.title }}</td>
+            <td class="mayus">
+              {{ item.description == null ? "-" : item.description }}
+            </td>
             <td align="center">
               <div class="btn-group" role="group">
                 <button
@@ -24,7 +26,7 @@
                 >
                   <i class="fa fa-pencil"></i>
                 </button>
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" (click)="deleteTask(item.id)">
                   <i class="fa fa-trash"></i>
                 </button>
               </div>
