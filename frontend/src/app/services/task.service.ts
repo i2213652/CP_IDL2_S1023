@@ -32,6 +32,10 @@ export class TaskService {
     const url = `${environment.apiUrl}/api/tasks/${id}`;
     return this.http.put(url, data);
   }
+  completeTask(id: number, data: any) {
+    const url = `${environment.apiUrl}/api/tasks/complete/${id}`;
+    return this.http.put(url, data);
+  }
 
   deleteTask(id: number) {
     const url = `${environment.apiUrl}/api/tasks/${id}`;

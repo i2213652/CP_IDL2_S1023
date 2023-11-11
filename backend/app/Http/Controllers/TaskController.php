@@ -45,6 +45,21 @@ class TaskController extends Controller
         return response()->json(['task' => $task]);
     }
 
+    public function complete($id)
+    {
+        $task = Task::find($id);
+
+        if ($task->completed) {
+            $completed = false;
+        } else {
+            $completed = true;
+        }
+
+        $task->update(['completed' => $completed]);
+
+        return response()->json(['task' => $task]);
+    }
+
     public function destroy($id)
     {
         $task = Task::find($id);

@@ -49,4 +49,13 @@ export class TaskComponent implements OnInit {
       }
     });
   }
+
+  completeTask(id: number) {
+    return this.taskService.completeTask(id, {}).subscribe({
+      next: (data) => {
+        this.getTasks();
+      },
+      error: (e) => console.error(e),
+    });
+  }
 }

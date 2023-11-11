@@ -7,6 +7,7 @@
             <th>Id</th>
             <th>Título</th>
             <th>Descripción</th>
+            <th>Completado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -16,6 +17,13 @@
             <td class="mayus">{{ item.title }}</td>
             <td class="mayus">
               {{ item.description == null ? "-" : item.description }}
+            </td>
+            <td align="center">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.completed"
+                (change)="completeTask(item.id)"
+              />
             </td>
             <td align="center">
               <div class="btn-group" role="group">
